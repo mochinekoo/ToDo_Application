@@ -9,13 +9,21 @@ import java.util.Date;
 import mochineko.todo_app.library.DeserializedJson;
 import mochineko.todo_app.status.TaskStatus;
 
-public class TaskListJson extends DeserializedJson {
+public class TaskData extends DeserializedJson {
 
     private int id;
     private String name;
     private String description;
     private String status;
     private String created_at;
+
+    public TaskData(int id, String name, String description, String status, String created_at) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.created_at = created_at;
+    }
 
     public int getID() {
         return id;

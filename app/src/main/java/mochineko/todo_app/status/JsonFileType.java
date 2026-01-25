@@ -1,11 +1,11 @@
 package mochineko.todo_app.status;
 
 import mochineko.todo_app.R;
-import mochineko.todo_app.json.TaskListJson;
+import mochineko.todo_app.json.TaskData;
 import mochineko.todo_app.library.DeserializedJson;
 
 public enum JsonFileType {
-    TASK_LIST("task_list.json", R.raw.task_list, TaskListJson.class);
+    TASK_LIST("task_list.json", R.raw.task_list, TaskData.class);
 
     private final String fileName;
     private final int id;
