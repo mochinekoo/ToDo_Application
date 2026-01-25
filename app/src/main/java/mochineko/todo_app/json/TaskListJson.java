@@ -1,0 +1,53 @@
+package mochineko.todo_app.json;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+
+import mochineko.todo_app.library.DeserializedJson;
+import mochineko.todo_app.status.TaskStatus;
+
+public class TaskListJson extends DeserializedJson {
+
+    private int id;
+    private String name;
+    private String description;
+    private String status;
+    private String created_at;
+
+    public int getID() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getRawStatus() {
+        return status;
+    }
+
+    public TaskStatus getStatus() {
+        return TaskStatus.valueOf(status);
+    }
+
+    public String getRawCreatedAt() {
+        return created_at;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date formatDate = sdf.parse(created_at);
+            return LocalDateTime.ofInstant(formatDate.toInstant(), ZoneId.systemDefault());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
