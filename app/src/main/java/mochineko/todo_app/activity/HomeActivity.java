@@ -1,5 +1,6 @@
 package mochineko.todo_app.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -36,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void initialize() {
         RecyclerView task_recycler = findViewById(R.id.taskList_recycler);
-        TaskListRecyclerAdapter adapter = new TaskListRecyclerAdapter(this, Arrays.asList(new TaskData(0, "ああ", "aa", "RUNNING", "2025/10/10 12:10")));
+        TaskListRecyclerAdapter adapter = new TaskListRecyclerAdapter(this, Arrays.asList(new TaskData(0, "ああ", "aa", "RUNNING", "2025/10/10 12:10", Color.valueOf(255, 0, 255))));
         task_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         task_recycler.setAdapter(adapter);
 

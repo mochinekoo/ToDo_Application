@@ -36,6 +36,7 @@ public class TaskListRecyclerAdapter extends RecyclerView.Adapter<TaskListRecycl
         TaskData taskData = taskDataList.get(position);
         holder.taskName.setText(taskData.getName());
         holder.taskDescription.setText(taskData.getDescription());
+        holder.itemView.setBackgroundColor(taskData.getColor().toArgb());
     }
 
     @Override
@@ -44,14 +45,12 @@ public class TaskListRecyclerAdapter extends RecyclerView.Adapter<TaskListRecycl
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private Activity activity;
         private TextView taskName, taskDescription;
 
         public ViewHolder(@NonNull View itemView, Activity activity) {
             super(itemView);
             taskName = itemView.findViewById(R.id.taskName_text);
             taskDescription = itemView.findViewById(R.id.task_description);
-            this.activity = activity;
         }
     }
 
