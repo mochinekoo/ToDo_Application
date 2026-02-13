@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class TaskListRecyclerAdapter extends RecyclerView.Adapter<TaskListRecycl
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(activity).inflate(R.layout.tasklist_layout, parent, false);
-        return new ViewHolder(view, activity);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class TaskListRecyclerAdapter extends RecyclerView.Adapter<TaskListRecycl
         TaskData taskData = taskDataList.get(position);
         holder.taskName.setText(taskData.getName());
         holder.taskDescription.setText(taskData.getDescription());
-        holder.itemView.setBackgroundColor(taskData.getColor().toArgb());
+        holder.cardView.setCardBackgroundColor(taskData.getColor().toArgb());
     }
 
     @Override
@@ -46,11 +47,13 @@ public class TaskListRecyclerAdapter extends RecyclerView.Adapter<TaskListRecycl
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView taskName, taskDescription;
+        private CardView cardView;
 
-        public ViewHolder(@NonNull View itemView, Activity activity) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskName = itemView.findViewById(R.id.taskName_text);
             taskDescription = itemView.findViewById(R.id.task_description);
+            cardView = (CardView) itemView;
         }
     }
 
